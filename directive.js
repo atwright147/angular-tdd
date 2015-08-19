@@ -21,7 +21,7 @@ angular.module('namez').directive('checkName', function(){
 		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function(scope, elm, attrs, ngModel) {
-			console.log(elm.attr());
+			elm.addClass('myValidator');
 		}
 	};
 });

@@ -29,8 +29,8 @@
 			$scope.$digest();
 		}));
 
-		it('should add something awesome to my element', function () {
-			expect(el.contains('something awesome')).toBeTruthy();
+		it('should add class "myValidator" to element', function () {
+			expect(el.hasClass('myValidator')).toBeTruthy();
 		});
 	});
 })();

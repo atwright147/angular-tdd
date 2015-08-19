@@ -13,7 +13,7 @@
 		beforeEach(module('app'));
 
 		beforeEach(inject(function ($injector) {
-			el = angular.element('<input type="text" check-name ng-model="username" name="username">');
+			el = angular.element('<form name="form"><input type="text" check-name ng-model="username" name="username"></form>');
 			
 			// get $compile and $rootScope
 			$compile   = $injector.get('$compile');

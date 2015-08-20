@@ -8,7 +8,7 @@
 	});
 
 	describe('Directive', function () {
-		var el, $compile, $rootScope, $scope;
+		var el, form, $compile, $rootScope, $scope;
 
 		beforeEach(module('app'));
 
@@ -27,10 +27,19 @@
 
 			// Run all the watches on the current scope
 			$scope.$digest();
+
+			form = $scope.form;
 		}));
 
 		it('should add class "myValidator" to element', function () {
 			expect(el.find('input').hasClass('myValidator')).toBeTruthy();
+		});
+
+		it('should mark "Andy" as valid', function () {
+			form.username.$setViewValue('Andy', 'input');
+			$scope.$digest();
+			expect($scope.username).toEqual('Andy');
+			expect(form.$valid).toBe(true);
 		});
 	});
 })();

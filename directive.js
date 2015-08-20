@@ -22,6 +22,19 @@ angular.module('namez').directive('checkName', function(){
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function(scope, elm, attrs, ngModel) {
 			elm.addClass('myValidator');
+
+			// adjust what goes into the MODEL
+			ngModel.$parsers.push(function(viewValue) {
+				viewValue = viewValue || '';
+
+				if (viewValue == 'Andy') {
+					ngModel.$setValidity('inputWhitelist', true);
+				} else {
+					ngModel.$setValidity('inputWhitelist', false);
+				}
+
+				return viewValue;
+			});
 		}
 	};
 });

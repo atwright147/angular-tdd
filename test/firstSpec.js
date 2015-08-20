@@ -30,7 +30,7 @@
 		}));
 
 		it('should add class "myValidator" to element', function () {
-			expect(el.hasClass('myValidator')).toBeTruthy();
+			expect(el.find('input').hasClass('myValidator')).toBeTruthy();
 		});
 	});
 })();

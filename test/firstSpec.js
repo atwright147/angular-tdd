@@ -39,8 +39,8 @@
 			// https://pushkarkinikar.wordpress.com/2015/07/08/jasmine-unit-test-for-directive/
 			form.username.$setViewValue('Andy', 'input');
 			$scope.$digest();
-			expect($scope.username).toEqual('Andy');
-			expect(form.$valid).toBe(true);
+			expect($scope.form.username.$viewValue).toEqual('Andy');
+			expect($scope.form.$valid).toBe(true);
 		});
 	});
 })();

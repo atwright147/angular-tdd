@@ -43,7 +43,7 @@
 			expect($scope.form.$valid).toBe(true);
 		});
 
-		it('should mark "Tim" as valid', function () {
+		it('should mark "Tim" as invalid', function () {
 			form.username.$setViewValue('Tim', 'input');
 			$scope.$digest();
 			expect($scope.form.username.$viewValue).toEqual('Tim');

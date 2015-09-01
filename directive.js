@@ -22,12 +22,13 @@ angular.module('namez').directive('checkName', function(){
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function(scope, elm, attrs, ngModel) {
 			elm.addClass('myValidator');
+			var validValues = ['Andy', 'Ian', 'Dan'];
 
 			// adjust what goes into the MODEL
 			ngModel.$parsers.push(function(viewValue) {
 				viewValue = viewValue || '';
 
-				if (viewValue == 'Andy') {
+				if (viewValue.length >= 2 && _.indexOf(validValues, viewValue) != -1) {
 					ngModel.$setValidity('inputWhitelist', true);
 				} else {
 					ngModel.$setValidity('inputWhitelist', false);

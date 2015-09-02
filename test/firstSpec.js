@@ -35,33 +35,41 @@
 			expect(el.find('input').hasClass('myValidator')).toBeTruthy();
 		});
 
-		it('should mark "Andy" as valid', function () {
+		it('should pass a valid input into the model', function () {
 			// https://pushkarkinikar.wordpress.com/2015/07/08/jasmine-unit-test-for-directive/
 			form.username.$setViewValue('Andy', 'input');
 			$scope.$digest();
 			expect($scope.username).toEqual('Andy');
+		});
+
+		it('should mark "Andy" as valid', function () {
+			form.username.$setViewValue('Andy', 'input');
+			$scope.$digest();
 			expect($scope.form.$valid).toBe(true);
 		});
 
 		it('should mark "Ian" as valid', function () {
 			form.username.$setViewValue('Ian', 'input');
 			$scope.$digest();
-			expect($scope.username).toEqual('Ian');
 			expect($scope.form.$valid).toBe(true);
 		});
 
 		it('should mark "Dan" as valid', function () {
 			form.username.$setViewValue('Dan', 'input');
 			$scope.$digest();
-			expect($scope.username).toEqual('Dan');
 			expect($scope.form.$valid).toBe(true);
 		});
 
 		it('should mark "Tim" as invalid', function () {
 			form.username.$setViewValue('Tim', 'input');
 			$scope.$digest();
-			expect($scope.username).toEqual('Tim');
 			expect(form.$valid).toBe(false);
+		});
+
+		it('should not pass invalid input through to the model', function () {
+			form.username.$setViewValue('Tim', 'input');
+			$scope.$digest();
+			expect($scope.username).not.toBeDefined();
 		});
 	});
 })();

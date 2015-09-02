@@ -44,7 +44,6 @@
 		});
 
 		it('should mark "Ian" as valid', function () {
-			// https://pushkarkinikar.wordpress.com/2015/07/08/jasmine-unit-test-for-directive/
 			form.username.$setViewValue('Ian', 'input');
 			$scope.$digest();
 			expect($scope.username).toEqual('Ian');
@@ -52,7 +51,6 @@
 		});
 
 		it('should mark "Dan" as valid', function () {
-			// https://pushkarkinikar.wordpress.com/2015/07/08/jasmine-unit-test-for-directive/
 			form.username.$setViewValue('Dan', 'input');
 			$scope.$digest();
 			expect($scope.username).toEqual('Dan');

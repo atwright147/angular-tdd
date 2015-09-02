@@ -25,17 +25,24 @@ angular.module('namez').directive('checkName', function(){
 			var validValues = ['Andy', 'Ian', 'Dan'];
 
 			// adjust what goes into the MODEL
-			ngModel.$parsers.push(function(viewValue) {
-				viewValue = viewValue || '';
-
-				if (viewValue.length >= 2 && _.indexOf(validValues, viewValue) != -1) {
-					ngModel.$setValidity('inputWhitelist', true);
-				} else {
-					ngModel.$setValidity('inputWhitelist', false);
-				}
-
-				return viewValue;
+			ngModel.$formatters.push(function(modelValue) {
+				var value = modelValue || '';
+				return value;
 			});
+
+			// adjust what goes into the MODEL
+			ngModel.$parsers.push(function(viewValue) {
+				var value = viewValue || '';
+				return value;
+			});
+
+			ngModel.$validators.whitelist = function(modelValue, viewValue) {
+				var value = viewValue || modelValue;
+				if (value) {
+					return value.length >= 2 && _.indexOf(validValues, value) != -1;
+				}
+			};
+
 		}
 	};
 });
